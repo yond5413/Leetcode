@@ -1,8 +1,9 @@
+
 # Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode(object):
+     def __init__(self, val=0, next=None):
+         self.val = val
+         self.next = next
 # completion info
 #Time Submitted  |  Status   |  Runtime | Memory | Language
 #10/04/2022 18:33	Accepted	63 ms	 13.5 MB	python
