@@ -37,6 +37,12 @@ Constraints:
 Methods pop, top and getMin operations will always be called on non-empty stacks.
 At most 3 * 104 calls will be made to push, pop, top, and getMin.
 '''
+#### solution notes
+'''
+Poor time complexity I just sort and pick the lowest value from the stack
+this doesn't get O(1) time it is closer to O(nlog(n)) because of the sorting in reality but we do find the solution
+good base to work off
+'''
 class MinStack:
 
     def __init__(self):
