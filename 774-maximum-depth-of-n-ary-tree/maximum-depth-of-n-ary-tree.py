@@ -14,8 +14,8 @@ class Solution:
             if not curr or not curr.children:
                 return tot
             ret = 0
-            for child in curr.children:
-                if child:
-                    ret = max(ret,dfs(child,tot+1))
+
+            for c in curr.children:
+                ret = max(ret,dfs(c,tot+1))
             return ret
         return dfs(root,1)
