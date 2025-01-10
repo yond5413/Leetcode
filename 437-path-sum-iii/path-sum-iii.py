@@ -7,24 +7,15 @@
 from collections import defaultdict
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
-        if not root:
-            return 0
-        ret = 0
         lookup = defaultdict(int)
         lookup[0] = 1
-        def dfs(curr,targ):
+        def dfs(curr,total):
             count = 0
             if curr:
-                targ += curr.val
-                count = lookup[targ-targetSum]
-                lookup[targ] +=1
-                count += dfs(curr.left,targ)+dfs(curr.right,targ)
-                lookup[targ]-=1 
-            return count 
-        ret = dfs(root,0)
-        return ret
-        
-    
-
-
-        
+                total += curr.val
+                count += lookup[total-targetSum] 
+                lookup[total]+=1
+                count += dfs(curr.left,total) + dfs(curr.right,total)
+                lookup[total]-=1
+            return count
+        return dfs(root,0)
