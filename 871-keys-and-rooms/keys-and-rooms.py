@@ -6,8 +6,8 @@ class Solution:
             curr= queue.pop(0)
             edges = rooms[curr]
             visited.add(curr)
-            for e in edges:
-                if e not in visited:
-                    queue.append(e)
+            for v in edges:
+                if v not in visited:
+                    queue.append(v)
         return len(rooms) == len(visited)
         
