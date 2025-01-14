@@ -15,6 +15,8 @@ class Solution:
             total = 0
             if curr_vert not in visited:
                 visited.add(curr_vert)
+            else:
+                return total
             for pair in adj[curr_vert]:
                 vert,direction = pair
                 if vert not in visited:
