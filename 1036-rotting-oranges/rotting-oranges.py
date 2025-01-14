@@ -17,7 +17,7 @@ class Solution:
                     dx,dy = x+i,y+j
                     if dx>=m or dx<0 or dy>=n or dy<0:
                         continue
-                    print(f"{(dx,dy)}, {(m,n)}")
+                    
                     if grid[dx][dy] == 1:
                         fresh-=1
                         grid[dx][dy] =2 
