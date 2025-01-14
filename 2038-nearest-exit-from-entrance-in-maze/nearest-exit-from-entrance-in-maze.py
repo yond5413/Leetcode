@@ -8,6 +8,7 @@ class Solution:
             x,y,steps = queue.pop(0)
             adj = [(x+1,y),(x-1,y),(x,y+1),(x,y-1)]
             if (x,y) in visited:
+                # For TLE
                 continue
             if x == 0 or y == 0 or x == m-1 or y == n-1:
                 if [x,y] != entrance:
