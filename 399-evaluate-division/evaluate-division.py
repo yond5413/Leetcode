@@ -3,7 +3,6 @@ class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
         ret = []
         adj = defaultdict(dict)
-
         for i in range(len(equations)):
             u,v = equations[i]
             adj[u][v] = values[i]
@@ -19,7 +18,7 @@ class Solution:
                 if vert not in visited:
                     val = dfs(vert,target,visited)
                     if val !=-1:
-                        return cost*val
+                        return val*cost
             return -1
         for u,v in queries:
             ret.append(dfs(u,v,set()))
