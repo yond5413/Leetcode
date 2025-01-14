@@ -3,6 +3,7 @@ class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
         ret = []
         adj = defaultdict(dict)
+
         for i in range(len(equations)):
             u,v = equations[i]
             adj[u][v] = values[i]
