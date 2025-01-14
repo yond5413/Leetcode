@@ -1,29 +1,26 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         ret,fresh = 0,0
-        rows, cols = len(grid),len(grid[0])
-        queue = []
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c] == 2:
-                    queue.append((r,c)) 
-                elif grid[r][c] ==1:
+        m,n = len(grid),len(grid[0])
+        queue = list()
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] ==2:
+                    queue.append((i,j))
+                elif grid[i][j] == 1:
                     fresh +=1
-        ############################
-        # bfs now
-        while(queue and fresh>0):
-            for i in range(len(queue)):
+        while(queue and fresh >0):
+            for _ in range(len(queue)):
                 x,y = queue.pop(0)
-                adj = [(x+1,y),(x-1,y),(x,y+1),(x,y-1)]
+                adj = [(1,0),(-1,0),(0,-1),(0,1)]
                 for i,j in adj:
-                    if i>r or i<0 or j>c or j<0:
+                    dx,dy = x+i,y+j
+                    if dx>=m or dx<0 or dy>=n or dy<0:
                         continue
-                    if grid[i][j] == 1:
-                        grid[i][j] =2 
-                        queue.append((i,j))
-                        fresh -=1
-
-            ret+=1
-
-
-        return ret if fresh ==0 else -1
+                    print(f"{(dx,dy)}, {(m,n)}")
+                    if grid[dx][dy] == 1:
+                        fresh-=1
+                        grid[dx][dy] =2 
+                        queue.append((dx,dy))
+            ret +=1
+        return ret if fresh == 0 else -1
