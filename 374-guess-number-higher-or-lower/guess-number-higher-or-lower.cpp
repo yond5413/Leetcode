@@ -13,8 +13,11 @@ public:
         int l = 1, r = n;
         
         while(l<=r){
-            int mid = r+(l-r)/2; //(l+r)/2;
+            int mid = l+(r-l)/2; 
+            //(l+r)/2;
+            //r+(l-r)/2;
             // this helps with integer overflow 
+            // only works for integers which is fine for bin_search
             std:: cout << l << " l " << r <<" r  " << mid << " mid \n";
             if (guess(mid) == 0){
                 return mid;
