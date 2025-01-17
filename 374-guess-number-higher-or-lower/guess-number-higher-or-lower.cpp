@@ -14,6 +14,7 @@ public:
         
         while(l<=r){
             int mid = l+(r-l)/2; //(l+r)/2;
+            // this helps with integer overflow 
             std:: cout << l << " l " << r <<" r  " << mid << " mid \n";
             if (guess(mid) == 0){
                 return mid;
