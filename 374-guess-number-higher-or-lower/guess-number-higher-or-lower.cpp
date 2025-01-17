@@ -13,7 +13,7 @@ public:
         int l = 1, r = n;
         
         while(l<=r){
-            int mid = l+(r-l)/2; //(l+r)/2;
+            int mid = r+(l-r)/2; //(l+r)/2;
             // this helps with integer overflow 
             std:: cout << l << " l " << r <<" r  " << mid << " mid \n";
             if (guess(mid) == 0){
