@@ -38,7 +38,7 @@ public:
                         q.push(curr->right);
                     }
                 }
-                std:: cout<< "curr->val: " << curr->val<< " tot: "<< tot<<"\n";
+                //std:: cout<< "curr->val: " << curr->val<< " tot: "<< tot<<"\n";
             }
             //////////////////////////////////
             if (curr_max < tot){
