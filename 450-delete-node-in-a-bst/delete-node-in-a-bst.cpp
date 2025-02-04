@@ -12,40 +12,35 @@
 class Solution {
 public:
     TreeNode* deleteNode(TreeNode* root, int key) {
-        if(root == nullptr){
-            return nullptr;
+        if (root == nullptr){
+            return root;
         }
         /////////////////
-        if (root->val <key ){
-            // right side
+        if (root->val <key){
             root->right = deleteNode(root->right,key);
         }
-        
-        else if (root->val > key ){
-            // left side
+        else if (root->val > key){
             root->left = deleteNode(root->left,key);
         }
+        /////////////////
         else{
-            if (root->left == nullptr){
+            if (root->left != nullptr && root->right != nullptr){
+            TreeNode* curr = root->right;
+            while( curr->left!= nullptr){
+                curr = curr->left;
+            }
+            root->val = curr->val;
+            root->right = deleteNode(root->right,root->val);
+        } 
+            else if (root->left == nullptr){
                 return root->right;
             }
-            else if (root->right == nullptr){
+            else{
                 return root->left;
             }
-            /*else if (root->right == nullptr  && root->left == nullptr){
-                root = nullptr;
-            }*/
-            else{
-                TreeNode* curr = root->right;
-                while(curr->left != nullptr){
-                    curr = curr->left;
-                }
-                root->val = curr->val;
-                root->right = deleteNode(root->right,root->val);
-            }
         }
+
+
         return root;
-
-
     }
 };
