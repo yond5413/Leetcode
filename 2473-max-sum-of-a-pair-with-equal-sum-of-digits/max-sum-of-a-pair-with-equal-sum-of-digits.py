@@ -5,18 +5,16 @@ class Solution:
         ret = -1
         lookup = defaultdict(list)
         for i in range(len(nums)):
+            curr = nums[i]
             key = 0
-            temp = nums[i]
-            while(temp>0):
-                key += temp%10
-                temp = temp//10
-            heapq.heappush(lookup[key],-1*nums[i])
-        #print(lookup)
+            while(curr>0):
+                key += curr%10
+                curr //=10
+            heapq.heappush(lookup[key],-nums[i])
         keys = list(lookup.keys())
         for k in keys:
             if len(lookup[k])>=2:
-                curr = 0
-                curr-=heapq.heappop(lookup[k])
-                curr-=heapq.heappop(lookup[k])
-                ret = max(curr,ret)
+                curr = -1*heappop(lookup[k])
+                curr -= heappop(lookup[k])
+                ret = max(ret,curr)
         return ret
