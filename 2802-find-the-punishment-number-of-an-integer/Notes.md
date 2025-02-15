@@ -1,0 +1,1 @@
+<h2>find-the-punishment-number-of-an-integer Notes</h2><hr>[ Time taken: 22 m 15 s ]
