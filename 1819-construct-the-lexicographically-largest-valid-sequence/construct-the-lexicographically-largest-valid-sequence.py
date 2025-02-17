@@ -1,40 +1,32 @@
 class Solution:
     def constructDistancedSequence(self, n: int) -> List[int]:
-        size = 2*n-1
-        ret = [0]*size
-        # integer 1 occurs once
-        # every integer between 2 and n occurs twice
-        # for every integer i between 2 and n, the distance
-        ## between the 2 occurences of i is exactly i.
+        ret = [0]*(2*n-1)
         visited = set()
-        def dfs(idx: int):
-            if len(ret) == idx:
+        def dfs(i: int):
+            if i ==len(ret):
                 return True
             for num in range(n,0,-1):
-                # seen before 
+                #### boundary/repeats
                 if num in visited:
                     continue
-                # out of bounds 
-                if num>1 and (num+idx >= len(ret) or ret[num+idx] !=0):
-                    continue 
-                ###############
+                if num>1 and (num+i>=len(ret) or ret[num+i]!=0):
+                    continue
+                #################
+                ret[i] = num
                 visited.add(num)
-                ret[idx] = num
                 if num>1:
-                    ret[num+idx] = num
-                #############################
-                # find next step
-                j = idx+1
-                while(j<len(ret) and ret[j] !=0):
-                    j+=1
-                #################################
+                    ret[num+i] = num
+                # find next val
+                j = i
+                while (j<len(ret) and ret[j]!=0):
+                    j +=1
                 if dfs(j):
                     return True
-                ########backtrack######
+                ret[i] = 0
                 visited.remove(num)
-                ret[idx] =0
                 if num>1:
-                    ret[num+idx] = 0
+                    ret[num+i] = 0
             return False
+                
         dfs(0)
         return ret
