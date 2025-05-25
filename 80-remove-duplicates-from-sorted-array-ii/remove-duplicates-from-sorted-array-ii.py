@@ -12,9 +12,9 @@ class Solution:
         ---> this is because we can have 2 entires in a rowm but we just want to slide valid 
         entries to the left return l as our new length
         '''
-        l = 0
-        for r in range(len(nums)):
-            if l <= 1 or nums[l-2] != nums[r]:
+        l = 2
+        for r in range(2,len(nums)):
+            if nums[l-2] != nums[r]:
                 nums[l] = nums[r]
                 l+=1
         return l
