@@ -11,10 +11,7 @@ class Solution:
         l,r = 0,len(s)-1
         while(l<r):
             if s[l]!=s[r]:
-                if isPalindrome(s[l+1:r+1]) or isPalindrome(s[l:r]):
-                    return True
-                else:
-                    return False
+                return isPalindrome(s[l+1:r+1]) or isPalindrome(s[l:r])    
             l+=1
             r-=1
         return True
