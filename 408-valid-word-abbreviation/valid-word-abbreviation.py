@@ -6,7 +6,7 @@ class Solution:
         i,j = 0,0
         m,n = len(abbr),len(word)
         while(j<m and i<n):
-            print(f"i:{i},j:{j}")
+            #print(f"i:{i},j:{j}")
             if abbr[j].isdigit():
                 offset = 0
                 if abbr[j] =='0':
