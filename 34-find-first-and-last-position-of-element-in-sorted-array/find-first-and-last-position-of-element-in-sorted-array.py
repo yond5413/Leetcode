@@ -3,19 +3,17 @@ class Solution:
         l = self.bin_search(nums,target,True)
         r = self.bin_search(nums,target,False)
         return [l,r]
-
-    def bin_search(self,nums,target,left_most):
+    def bin_search(self,nums,target,left_bias):
         ret = -1
         l,r = 0,len(nums)-1
         while(l<=r):
-            mid = (r+l)//2
+            mid = (l+r)//2
             if nums[mid]==target:
                 ret = mid
-                if left_most:
-                    r = mid-1 
+                if left_bias:
+                    r = mid-1
                 else:
                     l = mid+1
-
             elif nums[mid]>target:
                 r = mid-1
             else:
