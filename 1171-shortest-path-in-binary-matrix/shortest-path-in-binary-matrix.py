@@ -3,16 +3,16 @@ class Solution:
         n = len(grid)
         queue = [(0,0,1)]
         visited = set()
-        adj_list = [(1,0),(0,1),(1,1),(-1,-1),
-        (-1,0),(0,-1),(1,-1),(-1,1)]
+        adj_list = [(0,1),(1,0),(1,1),(-1,-1),
+        (-1,0),(0,-1),(-1,1),(1,-1)]
         while queue:
-            i,j,steps = queue.pop(0)
-            if min(i,j)<0 or max(i,j)>=n or grid[i][j]:
+            r,c,steps = queue.pop(0)
+            if min(r,c)<0 or max(r,c)>=n or grid[r][c]:
                 continue
-            if i == n-1 and j == n-1:
+            if r ==n-1 and c==n-1:
                 return steps
-            for x,y in adj_list:
-                if (x+i,y+j) not in visited:
-                    queue.append((x+i,y+j,steps+1)) 
-                    visited.add((x+i,y+j))
+            for i,j in adj_list:
+                if (r+i,c+j) not in visited:
+                    queue.append((r+i,c+j,steps+1))
+                    visited.add((r+i,c+j)) 
         return -1
