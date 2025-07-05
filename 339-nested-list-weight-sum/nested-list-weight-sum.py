@@ -47,7 +47,6 @@ class Solution:
         
 
         for i in range(len(nestedList)):
-            print(nestedList[i])
             if nestedList[i].isInteger():
                 ret+=nestedList[i].getInteger()
             else:
@@ -55,13 +54,11 @@ class Solution:
                 queue = []
                 for n in new:
                     queue.append((n,2))
-                #queue = [(nestedList[i].getList(),2)]
                 while(queue):
                     curr,depth = queue.pop(0)
                     if curr.isInteger():
                         ret+= curr.getInteger()*depth
-                    else:
-                        #queue.append((curr.getList(),depth+1)) 
+                    else: 
                         new = curr.getList()
                         for n in new:
                             queue.append((n,depth+1))
