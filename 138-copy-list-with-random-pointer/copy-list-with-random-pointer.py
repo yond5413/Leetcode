@@ -18,10 +18,9 @@ class Solution:
             curr = curr.next
         curr = head
         while curr:
-            copy = lookup[curr]
             if curr.next:
-                copy.next = lookup[curr.next]
+                lookup[curr].next = lookup[curr.next]
             if curr.random:
-                copy.random = lookup[curr.random]
+                lookup[curr].random = lookup[curr.random]
             curr = curr.next
         return lookup[head]
