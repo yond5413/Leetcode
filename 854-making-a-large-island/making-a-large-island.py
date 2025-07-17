@@ -13,6 +13,7 @@ class Solution:
                 if grid[i][j] == 1 and (i,j) not in visited:
                     queue = [(i,j)]
                     count = 0
+                    visited.add((i,j))
                     while (queue):
                         x,y = queue.pop()
                         grid[x][y] = label
