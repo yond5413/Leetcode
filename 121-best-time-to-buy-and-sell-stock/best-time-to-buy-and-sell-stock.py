@@ -3,7 +3,8 @@ class Solution:
         ret = 0
         mini = prices[0]
         for i in range(1,len(prices)):
-            if ret< (prices[i]-mini):
-                ret = (prices[i]-mini)
+            #if ret< (prices[i]-mini):
+            #    ret = (prices[i]-mini)
+            ret = max(ret,(prices[i]-mini))
             mini = min(prices[i],mini)
         return ret
