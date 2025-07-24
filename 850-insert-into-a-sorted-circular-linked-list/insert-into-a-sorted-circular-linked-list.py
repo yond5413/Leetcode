@@ -12,23 +12,18 @@ class Solution:
         if not head:
             new_node.next = new_node
             return new_node
-        def helper(curr,next,new):
+        def add(curr,nex,new):
             curr.next = new
-            new.next = next
-
+            new.next = nex
         curr = head
-        while curr.next != head:
-
-            if curr.val <= insertVal and insertVal<= curr.next.val:
-                helper(curr,curr.next,new_node)
+        while curr.next!=head:
+            if curr.val<= insertVal and curr.next.val>= insertVal:
+                add(curr,curr.next,new_node)
                 return head
-            elif curr.val >curr.next.val:
-                print(f"curr:{curr.val},insert:{insertVal},next:{curr.next.val}")
-                if curr.next.val>=insertVal or insertVal >=curr.val:
-                    print('tears')
-                    helper(curr,curr.next,new_node)
+            elif curr.val>curr.next.val:
+                if curr.val<= insertVal or curr.next.val>=insertVal:
+                    add(curr,curr.next,new_node)
                     return head
             curr = curr.next
-        print(f"curr:{curr.val},next:{curr.next.val}")
-        helper(curr,curr.next,new_node)
+        add(curr,curr.next,new_node)
         return head
