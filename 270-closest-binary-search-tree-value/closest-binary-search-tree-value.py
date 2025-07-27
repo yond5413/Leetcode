@@ -8,21 +8,18 @@ class Solution:
     def closestValue(self, root: Optional[TreeNode], target: float) -> int:
         if not root:
             return 0
-        
         def dfs(curr,closest):
             if not curr:
                 return closest
             diff = abs(target-curr.val)
             if diff<abs(target-closest):
                 closest = curr.val
-            elif diff == abs(target-closest):
-                closest =min(curr.val,closest)
-            if curr.val>target:
-                return dfs(curr.left,closest)
-                #return min(closest,dfs(curr.left,closest))
-            elif curr.val<target:
-                #return #min(closest,dfs(curr.right,closest))
+            elif diff==abs(target-closest):
+                closest = min(curr.val,closest)
+            if curr.val < target:
                 return dfs(curr.right,closest)
+            elif curr.val>target:
+                return dfs(curr.left,closest)
             return closest
-
+            ###########################
         return dfs(root,root.val)
