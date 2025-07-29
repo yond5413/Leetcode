@@ -10,27 +10,15 @@ from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
         if not node:
-            return None
-        queue = [node]
-        lookup = {} #val: node clone as pair
+            return node
+        lookup,queue = {node.val:Node(node.val)},[node]
         while queue:
             curr = queue.pop()
-            if curr.val not in lookup:
-                lookup[curr.val] = Node(val=curr.val)
-                for vert in curr.neighbors:
-                    if vert.val in lookup:
-                        lookup[curr.val].neighbors.append(lookup[vert.val])
-                    else:
-                        lookup[vert.val] = Node(vert.val)
-                        queue.append(vert)
-                        lookup[curr.val].neighbors.append(lookup[vert.val])
-            elif len(curr.neighbors) !=  len(lookup[curr.val].neighbors):
-                for vert in curr.neighbors:
-                    if vert.val in lookup:
-                        lookup[curr.val].neighbors.append(lookup[vert.val])
-                    else:
-                        lookup[vert.val] = Node(vert.val)
-                        queue.append(vert)
-                        lookup[curr.val].neighbors.append(lookup[vert.val])
+            clone = lookup[curr.val]
+            if curr.neighbors:
+                for v in curr.neighbors:
+                    if v.val not in lookup:
+                        lookup[v.val] = Node(v.val)
+                        queue.append(v)
+                    clone.neighbors.append(lookup[v.val])
         return lookup[node.val]
-        
