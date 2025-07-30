@@ -1,6 +1,6 @@
 class Solution:
     def isNumber(self, s: str) -> bool:
-        digit = dot = exp = False
+        digit = exp = dot = False
         for i in range(len(s)):
             if s[i] in ['+','-']:
                 if i>0 and s[i-1] not in ['e','E']:
@@ -13,7 +13,7 @@ class Solution:
                 digit = False
                 exp = True
             elif s[i] == '.':
-                if dot or exp:
+                if exp or dot:
                     return False
                 dot = True
             else:
