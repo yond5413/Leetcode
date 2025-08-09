@@ -1,1 +1,1 @@
-<h2>find-median-from-data-stream Notes</h2><hr>[ Time taken: 8 m 25 s ]
+<h2>find-median-from-data-stream Notes</h2><hr>[ Time taken: 5 m 39 s ]
