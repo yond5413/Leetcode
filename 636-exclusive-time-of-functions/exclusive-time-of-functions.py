@@ -4,16 +4,19 @@ class Solution:
         start = 0
         stack = []
         for log in logs:
-            func_id,state,timestamp =log.split(':')
+            func_id,state,timestamp = log.split(':')
             func_id = int(func_id)
             timestamp = int(timestamp)
             if state == 'start':
                 if stack:
-                    ret[stack[-1]]+= timestamp - start
-                stack.append(func_id)
+                    ret[stack[-1]] += timestamp -start
+                    '''handles update for multiple starts in a row'''
                 start = timestamp
+                stack.append(func_id)
             else:
-                ret[stack.pop(-1)]+= timestamp - start+1
-                start = timestamp +1
-
+                ret[stack.pop(-1)]+=timestamp -start+1
+                start = timestamp+1
+                ''' 
+                +1 is updated to make inclusive 
+                '''
         return ret
