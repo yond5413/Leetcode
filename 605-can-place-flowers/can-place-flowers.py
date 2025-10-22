@@ -14,5 +14,5 @@ class Solution:
                 if flowerbed[i-1] != 1 and flowerbed[i+1]!=1:
                     flowerbed[i] = 1
                     count-=1
-        print(f"count:{count},flower:{flowerbed}")
+        #print(f"count:{count},flower:{flowerbed}")
         return count<= 0
