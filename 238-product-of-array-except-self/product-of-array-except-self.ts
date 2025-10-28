@@ -1,6 +1,6 @@
 function productExceptSelf(nums: number[]): number[] {
     let n = nums.length
-    let pre = new Array(n).fill(1);
+    let pre =  Array(n).fill(1);
     for (let i = 1;i<n;i++){
         pre[i] = pre[i-1]*nums[i-1]
     }
