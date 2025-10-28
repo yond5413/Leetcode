@@ -1,22 +1,20 @@
 function reverseVowels(s: string): string {
-  let curr = s.split("")
- 
+    let curr = s.split("")
+    const vowels = ["a","e","i","o","u"]
     let l = 0
     let r = s.length-1
-    const letters = ["a","e","i","o","u"]
-    const vowels =new  Set(letters);
-    
-    while(l<=r){
-        if (vowels.has(s[l].toLowerCase())&& vowels.has(s[r].toLowerCase())){
-            curr[l] = s[r]
+    const lookup = new Set(vowels)
+    while (l<r){
+        if (lookup.has(s[l].toLowerCase()) && lookup.has(s[r].toLowerCase())) {
             curr[r] = s[l]
+            curr[l] = s[r]
             l++;
             r--;
         }
-        else if (vowels.has(s[l].toLowerCase())){
+        else if (lookup.has(s[l].toLowerCase()) ){
             r--;
         }
-        else if (vowels.has(s[r].toLowerCase())){
+         else if (lookup.has(s[r].toLowerCase()) ){
             l++;
         }
         else{
@@ -24,7 +22,5 @@ function reverseVowels(s: string): string {
             r--;
         }
     }
-
-
-  return curr.join("")  
+    return curr.join("")
 };
