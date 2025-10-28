@@ -5,9 +5,8 @@ class Solution:
         for i in range(1,n):
             pre[i] = pre[i-1]*nums[i-1]
         post = 1
-        answer = [0]*n
-        
+        ret= [0]*n
         for i in range(n-1,-1,-1):
-            answer[i] = pre[i]*post
-            post*=nums[i] 
-        return answer
+            ret[i] = post*pre[i]
+            post*=nums[i]
+        return ret
