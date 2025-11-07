@@ -4,13 +4,13 @@ class Solution:
         while r<len(chars):
             curr = chars[r]
             count = 0
-            while r<len(chars) and curr ==chars[r]:
+            while r<len(chars) and chars[r] == curr:
                 r+=1
                 count+=1
             chars[l] = curr
             l+=1
             if count>1:
                 digits = str(count)
-                chars[l:l+len(digits)] = list(digits)
-                l+=len(digits)
+                chars[l:l+len(digits)] = digits
+                l+= len(digits)
         return l
