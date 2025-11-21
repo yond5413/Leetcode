@@ -2,7 +2,5 @@ from collections import Counter
 class Solution:
     def uniqueOccurrences(self, arr: List[int]) -> bool:
         lookup = Counter(arr)
-
-        counts = set(lookup.values())
-
-        return len(counts) == len(lookup) 
+        vals_set = set(lookup.values())
+        return len(vals_set) == len(lookup)
