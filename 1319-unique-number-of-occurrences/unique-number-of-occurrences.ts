@@ -1,6 +1,6 @@
 function uniqueOccurrences(arr: number[]): boolean {
     let lookup = new Map()
-    for(let i = 0;i<arr.length;i++){
+    for (let i = 0; i<arr.length;i++){
         if (lookup.has(arr[i])){
             lookup.set(arr[i],lookup.get(arr[i])+1)
         }
@@ -8,15 +8,14 @@ function uniqueOccurrences(arr: number[]): boolean {
             lookup.set(arr[i],1)
         }
     }
-    ///
-    let seen = new Set();
+    let seen = new Set()
     for (const val of lookup.values()){
         if (seen.has(val)){
-            return false;
+            return false
         }
         else {
             seen.add(val)
         }
     }
-    return true;
+    return true
 };
