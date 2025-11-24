@@ -9,5 +9,5 @@ class Solution:
             rows[curr] = 1+rows.get(curr,0)
         for i in range(n):
             col = [grid[j][i] for j in range(n)]
-            ret+= rows.get(tuple(col),0)
+            ret+=rows.get(tuple(col),0)
         return ret
