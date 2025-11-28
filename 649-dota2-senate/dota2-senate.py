@@ -1,18 +1,16 @@
 class Solution:
     def predictPartyVictory(self, senate: str) -> str:
         queue = list(senate)
-        #ret = ''
-        r_count=d_count=r_ban=d_ban = 0
-        ##################
+        r_count = d_count = r_ban = d_ban = 0
         for s in senate:
-            if s =="R":
+            if s == "R":
                 r_count+=1
             else:
                 d_count+=1
-        while(queue):
+        while queue:
             curr = queue.pop(0)
             if curr == "R":
-                if r_ban>0:
+                if r_ban > 0:
                     r_ban-=1
                 else:
                     d_ban+=1
@@ -23,8 +21,8 @@ class Solution:
                 else:
                     r_ban+=1
                     queue.append(curr)
-            if r_count<=r_ban:
+            if r_ban>=r_count:
                 return "Dire"
-            elif d_count<=d_ban:
+            if d_ban>=d_count:
                 return "Radiant"
-        #########################
+                
