@@ -9,16 +9,17 @@ class Solution:
         while fast and fast.next:
             fast = fast.next.next
             slow = slow.next
-        ##########################
-        prev,curr = None, slow
+        #########################
+        prev,curr = None,slow
         while curr:
             temp = curr.next
             curr.next = prev
             prev = curr
             curr = temp
-        ##########################
+        ###########################
         ret = 0
-        first,second = head, prev
+        first = head
+        second = prev
         while second:
             curr = first.val+second.val
             ret = max(ret,curr)
