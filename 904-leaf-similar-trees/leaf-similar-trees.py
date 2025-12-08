@@ -7,14 +7,13 @@
 class Solution:
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         r1,r2 = [],[]
-        def dfs(root,leaf):
-            if not root:
-                return
-            if not root.left and not root.right:
-                leaf.append(root.val)
-                return
-            dfs(root.left,leaf)
-            dfs(root.right,leaf)
+        def dfs(curr,leaves):
+            if not curr:
+                return None
+            if not curr.left and not curr.right:
+                leaves.append(curr.val)
+            dfs(curr.left,leaves)
+            dfs(curr.right,leaves)
         dfs(root1,r1)
         dfs(root2,r2)
         return r1 == r2
