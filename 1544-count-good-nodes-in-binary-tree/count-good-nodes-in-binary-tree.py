@@ -6,15 +6,15 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        '''
-        basically as we go across each path we are keeping track of the amount of 
-        times across each path the max increases
-        '''
-        def dfs(node,maximum):
-            if not node:
+        if not root:
+            return 0
+        def dfs(curr,path_max):
+            if not curr:
                 return 0
-            if node.val>= maximum:
-                return dfs(node.left,node.val)+dfs(node.right,node.val)+1
+            if curr.val>=path_max:
+                path_max = curr.val
+                return dfs(curr.left,path_max)+dfs(curr.right,path_max)+1
             else:
-                return dfs(node.left,maximum)+dfs(node.right,maximum)
+                return dfs(curr.left,path_max)+dfs(curr.right,path_max)
         return dfs(root,root.val)
+       
