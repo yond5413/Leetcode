@@ -17,7 +17,7 @@ class Solution:
                 lookup[total]+=1
                 ret+=dfs(curr.left,total)+dfs(curr.right,total)
                 lookup[total]-=1
-                total-=curr.val
+                #total-=curr.val
             return ret
         return dfs(root,0)
 
