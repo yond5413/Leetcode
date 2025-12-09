@@ -13,10 +13,12 @@ class Solution:
             ret = 0
             if curr:
                 total+=curr.val
-                ret += lookup[total-targetSum]
+                ret+=lookup[total-targetSum]
                 lookup[total]+=1
-                ret+= dfs(curr.left,total)+dfs(curr.right,total)
+                ret+=dfs(curr.left,total)+dfs(curr.right,total)
                 lookup[total]-=1
-
+                total-=curr.val
             return ret
         return dfs(root,0)
+
+        
