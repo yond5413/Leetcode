@@ -8,13 +8,14 @@ class Solution:
     def longestZigZag(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
-        def dfs(curr,direct,total):
+        def dfs(curr,direction,total):
             if not curr:
                 return total
-            if direct:
-                l,r = dfs(curr.left,False,total+1),dfs(curr.right,True,1)
+            if direction:
+                l = dfs(curr.left,False,total+1)
+                r = dfs(curr.right,True,1)
             else:
-                l,r = dfs(curr.left,False,1),dfs(curr.right,True,total+1)
+                l = dfs(curr.left,False,1)
+                r = dfs(curr.right,True,total + 1)
             return max(l,r)
-            
         return dfs(root,None,0)-1
