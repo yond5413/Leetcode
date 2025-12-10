@@ -18,6 +18,10 @@ function rightSideView(root: TreeNode | null): number[] {
     }
     let ret = []
     let queue = [root]
+    /*
+    stack -> push,pop
+    queue -> unshift,shift
+    */
     while (queue.length>0){
         let n = queue.length
         for (let i =0;i<n;i++){
