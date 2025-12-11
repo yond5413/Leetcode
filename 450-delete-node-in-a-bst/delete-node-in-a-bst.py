@@ -15,12 +15,13 @@ class Solution:
         else:
             if root.left and root.right:
                 curr = root.right
-                # get minimum from right side
+                # smallest from right hand side
+                # coudl maybe do largest from left handside
                 while curr.left:
                     curr = curr.left
                 root.val = curr.val
-                root.right = self.deleteNode(root.right,root.val)
+                root.right = self.deleteNode(root.right,curr.val)
             else:
                 root = root.left if root.left else root.right
-            
         return root
+        
