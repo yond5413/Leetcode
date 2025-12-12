@@ -10,13 +10,13 @@ class TimeMap:
     def get(self, key: str, timestamp: int) -> str:
         if key not in self.map:
             return ''
-        ret = ''
         arr = self.map[key]
-        l,r = 0,len(arr)-1 
-        while (l<=r):
+        l,r = 0,len(arr)-1
+        ret = ''
+        while(l<=r):
             mid = (r+l)//2
             t,v = arr[mid]
-            if t<= timestamp:
+            if t<=timestamp:
                 ret = v
                 l = mid+1
             else:
