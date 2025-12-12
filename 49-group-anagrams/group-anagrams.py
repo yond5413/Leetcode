@@ -7,7 +7,6 @@ class Solution:
                 lookup[s_sorted].append(s)
             else:
                 lookup[s_sorted] = [s]
-
         ret = []
         for k in lookup.keys():
             ret.append(lookup[k])
