@@ -1,8 +1,6 @@
 from collections import defaultdict
 class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
-        ret = []
-        ## starts at jfk
         adj = defaultdict(list)
         for u,v in tickets:
             adj[u].append(v)
@@ -10,13 +8,8 @@ class Solution:
             adj[k].sort()
         ret = []
         def dfs(curr):
-            while adj[curr]:
-                next_dest = adj[curr].pop(0)
-                dfs(next_dest)
+            while(adj[curr]):
+                dfs(adj[curr].pop(0))
             ret.append(curr)
-
         dfs("JFK")
-        return ret[::-1]    
-
-            
-
+        return ret[::-1]
