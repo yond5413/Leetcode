@@ -8,7 +8,7 @@ class Solution:
             adj[k].sort()
         ret = []
         def dfs(curr):
-            while(adj[curr]):
+            while (adj[curr]):
                 dfs(adj[curr].pop(0))
             ret.append(curr)
         dfs("JFK")
