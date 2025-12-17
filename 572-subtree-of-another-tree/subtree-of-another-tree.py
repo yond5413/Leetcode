@@ -11,7 +11,7 @@ class Solution:
                 return True
             if not p or not q:
                 return False
-            return p.val == q.val and isSame(p.left,q.left)and isSame(p.right,q.right)
+            return p.val == q.val and isSame(p.left,q.left) and isSame(p.right,q.right)
         def dfs(curr):
             if not curr:
                 return False
