@@ -1,13 +1,8 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        lookup = {}
+        lookup = defaultdict(list)
         for s in strs:
             s_sorted = "".join(sorted(s))
-            if s_sorted in lookup:
-                lookup[s_sorted].append(s)
-            else:
-                lookup[s_sorted] = [s]
-        ret = []
-        for k in lookup.keys():
-            ret.append(lookup[k])
+            lookup[(s_sorted)].append(s)
+        ret = [lookup[k] for k in lookup.keys()]
         return ret
