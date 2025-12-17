@@ -2,26 +2,26 @@ from collections import defaultdict
 class TimeMap:
 
     def __init__(self):
-        self.map = defaultdict(list)
+        self.lookup = defaultdict(list)
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        self.map[key].append((timestamp,value))
+        self.lookup[key].append((timestamp,value))
 
     def get(self, key: str, timestamp: int) -> str:
-        if key not in self.map:
-            return ''
-        arr = self.map[key]
-        l,r = 0,len(arr)-1
+        if key not in self.lookup:
+            return ""
+        events = self.lookup[key]
+        l,r = 0,len(events)-1
         ret = ''
         while(l<=r):
             mid = (r+l)//2
-            t,v = arr[mid]
-            if t<=timestamp:
-                ret = v
+            ts,val = events[mid]
+            if ts<=timestamp:
                 l = mid+1
+                ret =val
             else:
                 r = mid-1
-        return ret
+        return ret 
         
 
 
