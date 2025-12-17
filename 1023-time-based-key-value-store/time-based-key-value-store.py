@@ -1,4 +1,3 @@
-from collections import defaultdict
 class TimeMap:
 
     def __init__(self):
@@ -10,18 +9,18 @@ class TimeMap:
     def get(self, key: str, timestamp: int) -> str:
         if key not in self.lookup:
             return ""
+        ret = ""
         events = self.lookup[key]
         l,r = 0,len(events)-1
-        ret = ''
         while(l<=r):
             mid = (r+l)//2
             ts,val = events[mid]
             if ts<=timestamp:
                 l = mid+1
-                ret =val
+                ret = val
             else:
                 r = mid-1
-        return ret 
+        return ret
         
 
 
