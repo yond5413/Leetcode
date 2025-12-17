@@ -4,11 +4,11 @@ class Solution:
         for u,v in tickets:
             adj[u].append(v)
         for k in adj.keys():
-            adj[k].sort()
+            adj[k].sort(reverse=True)
         ret = []
-        def dfs(curr):
+        def dfs(curr):  
             while adj[curr]:
-                dfs(adj[curr].pop(0))
+                dfs(adj[curr].pop())
             ret.append(curr)
         dfs("JFK")
         return ret[::-1]
