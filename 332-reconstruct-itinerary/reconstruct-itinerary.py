@@ -1,11 +1,10 @@
-from collections import defaultdict
 class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
         adj = defaultdict(list)
         for u,v in tickets:
             adj[u].append(v)
         for k in adj.keys():
-            adj[k] = sorted(adj[k])
+            adj[k].sort()
         ret = []
         def dfs(curr):
             while adj[curr]:
