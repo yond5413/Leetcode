@@ -7,21 +7,20 @@ class TimeMap:
         self.lookup[key].append((timestamp,value))
 
     def get(self, key: str, timestamp: int) -> str:
-        if key not in self.lookup:
-            return ""
         ret = ""
-        events = self.lookup[key]
-        l,r = 0,len(events)-1
-        while(l<=r):
+        if key not in self.lookup:
+            return ret
+        arr = self.lookup[key]
+        l,r = 0,len(arr)-1
+        while (l<=r):
             mid = (r+l)//2
-            ts,val = events[mid]
+            ts,val = arr[mid]
             if ts<=timestamp:
-                l = mid+1
                 ret = val
+                l = mid+1
             else:
                 r = mid-1
         return ret
-        
 
 
 # Your TimeMap object will be instantiated and called as such:
