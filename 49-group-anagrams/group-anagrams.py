@@ -4,5 +4,4 @@ class Solution:
         for s in strs:
             s_sorted = "".join(sorted(s))
             lookup[(s_sorted)].append(s)
-        ret = [lookup[k] for k in lookup.keys()]
-        return ret
+        return [lookup[k] for k in lookup.keys()]
