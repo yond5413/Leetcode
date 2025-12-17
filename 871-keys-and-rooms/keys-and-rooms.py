@@ -1,13 +1,12 @@
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
         visited = set()
-        queue = [0]
-        while(queue):
-            curr= queue.pop(0)
-            edges = rooms[curr]
+        stack = [0]
+        while (stack):
+            curr = stack.pop()
             visited.add(curr)
-            for v in edges:
-                if v not in visited:
-                    queue.append(v)
+            for i in rooms[curr]:
+                if i not in visited:
+                    stack.append(i)
+            
         return len(rooms) == len(visited)
-        
