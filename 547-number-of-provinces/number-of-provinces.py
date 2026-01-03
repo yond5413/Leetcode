@@ -1,8 +1,9 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        n = len(isConnected)
+        "connected components alg"
         ret = 0
         visited = set()
+        n = len(isConnected)
         def dfs(curr):
             visited.add(curr)
             for i in range(n):
@@ -12,5 +13,4 @@ class Solution:
             if i not in visited:
                 ret+=1
                 dfs(i)
-
         return ret
