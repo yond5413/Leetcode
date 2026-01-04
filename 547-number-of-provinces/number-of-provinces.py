@@ -1,6 +1,5 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        "connected components alg"
         ret = 0
         visited = set()
         n = len(isConnected)
