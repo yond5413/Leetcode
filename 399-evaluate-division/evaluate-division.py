@@ -6,15 +6,15 @@ class Solution:
             u,v = equations[i]
             adj[u][v] = values[i]
             adj[v][u] = 1/values[i]
-        ###################################
-        def dfs(root,target,visited):
-            if root not in adj and target not in visited:
+        ###############################
+        def dfs(curr,target,visited):
+            if curr not in adj or target not in adj:
                 return -1
-            if target in adj[root]:
-                return adj[root][target]
-            visited.add(root)
-            for v in adj[root]:
-                cost = adj[root][v]
+            if target in adj[curr]:
+                return adj[curr][target]
+            visited.add(curr)
+            for v in adj[curr]:
+                cost = adj[curr][v]
                 if v not in visited:
                     val = dfs(v,target,visited)
                     if val !=-1:
@@ -24,5 +24,3 @@ class Solution:
         for u,v in queries:
             ret.append(dfs(u,v,set()))
         return ret
-
-        
