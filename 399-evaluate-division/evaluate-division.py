@@ -6,7 +6,7 @@ class Solution:
             u,v = equations[i]
             adj[u][v] = values[i]
             adj[v][u] = 1/values[i]
-        ###############################
+        ##################################
         def dfs(curr,target,visited):
             if curr not in adj or target not in adj:
                 return -1
