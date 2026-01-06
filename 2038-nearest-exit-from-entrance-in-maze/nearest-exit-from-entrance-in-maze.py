@@ -1,22 +1,21 @@
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
-        queue = [(entrance[0],entrance[1],0)]
-        ret = -1
         m,n = len(maze),len(maze[0])
+        ret = float("inf")
+        u,v = entrance
+        queue = [(u,v,0)]
         visited = set()
-        while(queue):
-            x,y,steps = queue.pop(0)
-            adj = [(x+1,y),(x-1,y),(x,y+1),(x,y-1)]
-            if (x,y) in visited:
-                # For TLE
-                continue
-            if x == 0 or y == 0 or x == m-1 or y == n-1:
-                if [x,y] != entrance:
-                    return steps
-            visited.add((x,y))
-            for i,j in adj:
-                if i<0 or i>=m or j<0 or j>=n:
-                    continue
-                if (i,j) not in visited and maze[i][j] != '+':
-                    queue.append((i,j,steps+1)) 
-        return ret
+        while queue:
+            i,j,steps = queue.pop(0)
+            adj = [(1,0),(-1,0),(0,1),(0,-1)]
+            if i == 0 or i == m-1 or j == 0 or j == n-1 and maze[i][j] == ".":
+                
+                ret = min(steps,ret) if [i,j] != entrance else ret
+            for x,y in adj:
+                d_x,d_y = i+x,j+y
+                if d_x>=0 and d_x<m and d_y>=0 and d_y<n:
+                    if (d_x,d_y) not in visited and maze[d_x][d_y] == ".":
+                        queue.append((d_x,d_y,steps+1))
+                        visited.add((d_x,d_y))
+            visited.add((i,j))
+        return ret if ret != float("inf") else -1
