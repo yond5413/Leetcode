@@ -1,27 +1,24 @@
-import heapq
+import heapq as hq
 class SmallestInfiniteSet:
 
     def __init__(self):
-        self.lookup = set()
         self.heap = []
-        for i in range(1,1001):
-            self.lookup.add(i)
-            self.heap.append(i)
-
+        self.lookup = set()
+        self.curr = 1
     def popSmallest(self) -> int:
-        #print(f"heap:{self.heap}, set:{self.lookup}")
         if self.heap:
-            smallest = heapq.heappop(self.heap)
-            self.lookup.remove(smallest)
-            return smallest
-        return -1
+            ret = hq.heappop(self.heap)
+            self.lookup.remove(ret)
+        else:
+            ret = self.curr
+            self.curr+=1
+        return ret
 
     def addBack(self, num: int) -> None:
-        #print(f"heap:{self.heap}, set:{self.lookup}")
-        if num not in self.lookup:
-            heapq.heappush(self.heap,num)
+        if num< self.curr and num not in self.lookup:
             self.lookup.add(num)
-        
+            hq.heappush(self.heap,num)
+            
 
 
 # Your SmallestInfiniteSet object will be instantiated and called as such:
