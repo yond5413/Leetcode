@@ -7,7 +7,7 @@
 
 class Solution:
     def guessNumber(self, n: int) -> int:
-        l,r = 0,n
+        l,r = 1,n
         while(l<=r):
             mid = (r+l)//2
             res = guess(mid)
