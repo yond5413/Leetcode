@@ -15,6 +15,7 @@ class Solution:
         n = len(digits)
         def dfs(idx,curr):
             if idx == n:
+                visited.add(curr)
                 ret.append(curr[::])
                 return
             paths = lookup[digits[idx]]
@@ -22,6 +23,5 @@ class Solution:
                 if curr+p not in visited:
                     visited.add(curr+p)
                     dfs(idx+1,curr+p)
-                    visited.remove(curr+p)
         dfs(0,"")
         return ret
