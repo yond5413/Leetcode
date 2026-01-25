@@ -1,6 +1,5 @@
 class Solution:
     def numTilings(self, n: int) -> int:
-        
         if n<3:
             return n
         dp = [0]*n
