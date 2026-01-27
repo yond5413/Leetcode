@@ -6,4 +6,3 @@ class Solution:
             s_sorted = "".join(sorted(strs[i]))
             lookup[s_sorted].append(strs[i])
         return [lookup[k] for k in lookup.keys()]
-
