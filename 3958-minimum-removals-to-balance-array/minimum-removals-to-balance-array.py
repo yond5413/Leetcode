@@ -13,6 +13,5 @@ class Solution:
                 l+=1
         if big == float("-inf"):
             big = r-l+1
-        print(f"l:{l},r{r}")
         return n-big
             
