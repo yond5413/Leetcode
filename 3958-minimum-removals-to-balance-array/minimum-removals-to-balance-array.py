@@ -1,17 +1,13 @@
 class Solution:
     def minRemoval(self, nums: List[int], k: int) -> int:
         l,r = 0,0
-        nums.sort()
+        curr_max = 0
         n = len(nums)
-        big = float("-inf")
+        nums.sort()
         while(r<n):
             if nums[r]<=nums[l]*k:
-                print("wooooo")
                 r+=1
-                big = max(big,(r-l))
+                curr_max = max(curr_max,r-l)
             else:
                 l+=1
-        if big == float("-inf"):
-            big = r-l+1
-        return n-big
-            
+        return n-curr_max
