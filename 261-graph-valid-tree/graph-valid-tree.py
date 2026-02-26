@@ -2,7 +2,7 @@ from collections import defaultdict
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
         if not n:
-            return True
+            return True 
         adj = defaultdict(list)
         for u,v in edges:
             adj[u].append(v)
@@ -17,5 +17,5 @@ class Solution:
                     continue
                 if not dfs(i,curr):
                     return False
-            return True 
+            return True
         return dfs(0,-1) and n == len(visited)
