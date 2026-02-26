@@ -7,9 +7,6 @@ class Solution:
         for u,v in edges:
             adj[u].append(v)
             adj[v].append(u)
-
-        ## no cycles or repeating edges?
-        ## connected undirected graph without "simple" cycles
         visited = set()
         def dfs(curr,prev):
             if curr in visited:
@@ -20,9 +17,5 @@ class Solution:
                     continue
                 if not dfs(i,curr):
                     return False
-            
-            return True
-        
-        return dfs(0,-1) and len(visited) == n
-
-           
+            return True 
+        return dfs(0,-1) and n == len(visited)
