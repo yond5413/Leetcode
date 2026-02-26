@@ -13,7 +13,7 @@ class Solution:
             cycle.add(curr)
             for i in adj[curr]:
                 if not dfs(i):
-                    return False 
+                    return False
             cycle.remove(curr)
             visited.add(curr)
             ret.append(curr)
