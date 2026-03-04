@@ -4,7 +4,7 @@ class Solution:
         adj = defaultdict(list)
         for crs,pre in prerequisites:
             adj[crs].append(pre)
-        cycle,visited = set(),set()
+        visited,cycle = set(),set()
         def dfs(curr):
             if curr in visited:
                 return True
@@ -18,7 +18,6 @@ class Solution:
             visited.add(curr)
             ret.append(curr)
             return True
-
         ret = []
         for i in range(numCourses):
             if not dfs(i):
