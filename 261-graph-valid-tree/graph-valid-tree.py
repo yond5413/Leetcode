@@ -1,8 +1,6 @@
 from collections import defaultdict
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        if not n:
-            return True 
         adj = defaultdict(list)
         for u,v in edges:
             adj[u].append(v)
@@ -12,10 +10,10 @@ class Solution:
             if curr in visited:
                 return False
             visited.add(curr)
-            for i in adj[curr]:
-                if i == prev:
+            for u in adj[curr]:
+                if u == prev:
                     continue
-                if not dfs(i,curr):
+                if not dfs(u,curr):
                     return False
             return True
-        return dfs(0,-1) and n == len(visited)
+        return dfs(0,-1) and len(visited) == n
