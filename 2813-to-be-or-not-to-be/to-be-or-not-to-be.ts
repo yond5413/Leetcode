@@ -4,16 +4,16 @@ type ToBeOrNotToBe = {
 };
 
 function expect(val: any): ToBeOrNotToBe {
-     return {
-        toBe: (v: any) => {
-            if (v !== val) throw new Error("Not Equal");
-            return true;
+    return {
+        toBe: (v)=>{
+            if (v===val) return true;
+            throw new Error("Not Equal");
         },
-        notToBe: (v: any) => {
-            if (v === val) throw new Error("Equal");
-            return true;
+        notToBe: (v)=>{
+            if (v!==val) return true;
+            throw new Error("Equal")
         }
-    };
+    }
 };
 
 /**
