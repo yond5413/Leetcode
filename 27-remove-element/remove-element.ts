@@ -4,7 +4,7 @@ function removeElement(nums: number[], val: number): number {
         if (nums[i] !=val ){
             nums[k] = nums[i]
             k++
-            console.log(nums)
+            
         }
     }
     return k 
