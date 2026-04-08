@@ -14,7 +14,7 @@ class Solution:
                 r-=1
             return arr
         nums = rev(nums,0,n-1)
-        print(nums)
+        #print(nums)
         nums = rev(nums,0,steps-1)
-        print(nums)
+        #print(nums)
         nums = rev(nums,steps,n-1)
