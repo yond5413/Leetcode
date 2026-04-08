@@ -4,14 +4,14 @@
  * @return {Promise}
  */
 var addTwoPromises = async function(promise1, promise2) {
-   try {
-        const proms = [promise1,promise2]
-        let [res1,res2] = await Promise.all(proms)
-        return res1+res2
-   }catch(e){
-    console.log(e);
-    throw e;
-   }
+    try {
+        let r1 = await promise1
+        let r2 = await promise2
+        return r2+r1
+    }catch (e){
+        console.log(e)
+        throw e
+    }
 };
 
 /**
