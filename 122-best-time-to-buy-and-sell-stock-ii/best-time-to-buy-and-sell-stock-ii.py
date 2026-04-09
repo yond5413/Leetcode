@@ -1,17 +1,16 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        lookup = {}
-        def dfs(idx,buy):
-            if idx == len(prices):
+        dp = {}
+        def dfs(i,buy):
+            if i == len(prices):
                 return 0
-            if (idx,buy) in lookup:
-                return lookup[(idx,buy)]
-            hold = dfs(idx+1, buy) ## 
+            if (i,buy) in dp:
+                return dp[(i,buy)]
+            hold = dfs(i+1,buy)
             if buy:
-                profit = dfs(idx+1,not buy)-prices[idx]
+                profit = dfs(i+1,not buy) -prices[i]
             else:
-                profit = profit = dfs(idx+1,not buy)+prices[idx]
-            lookup[(idx,buy)] = max(profit,hold)
-            return lookup[(idx,buy)]
+                profit =  dfs(i+1,not buy) +prices[i]
+            dp[(i,buy)] = max(hold,profit)
+            return dp[(i,buy)]
         return dfs(0,True)
-        
