@@ -7,9 +7,6 @@ function xorAfterQueries(nums: number[], queries: number[][]): number {
             idx+=k
         }
     }
-    let ret  = 0
-    for(let i = 0;i<nums.length;i++){
-        ret ^=nums[i]
-    }
+    const ret = nums.reduce((n,v)=>n^v,0)
     return ret
 };
