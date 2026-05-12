@@ -1,11 +1,13 @@
 function removeElement(nums: number[], val: number): number {
-    let k = 0
-    for (let i =0; i<nums.length;i++){
-        if (nums[i] !=val ){
-            nums[k] = nums[i]
-            k++
-            
+    let ret = 0
+    let l = 0
+    let n = nums.length
+    for (let r = 0; r<n;r++){
+        if (nums[r] != val){
+            nums[l] = nums[r]
+            l++
+            ret++
         }
     }
-    return k 
+    return ret
 };
