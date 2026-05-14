@@ -5,5 +5,4 @@ class Solution:
         for i in range(len(nums)):
             curr = max(curr+nums[i],nums[i])
             ret = max(ret,curr)
-
         return ret
