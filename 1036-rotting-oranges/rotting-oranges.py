@@ -1,25 +1,26 @@
-
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        ret,fresh = 0,0
-        queue = []
         m,n = len(grid),len(grid[0])
+        visited = set()
+        rotten,fresh =[],0 
+        ret = 0
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == 2:
-                    queue.append((i,j,1))
-                elif grid[i][j] == 1:
+                if grid[i][j] ==1:
                     fresh+=1
-        while queue and fresh>0:
-            i,j,step = queue.pop(0)
-            adj = [(1,0),(-1,0),(0,1),(0,-1)]
-            for x,y in adj:
-                dx,dy = i+x,j+y
-                if dx >=0 and dx<m and dy>=0 and dy<n:
-                    if grid[dx][dy] == 1:
+                elif grid[i][j] ==2:
+                    rotten.append((i,j))
+        queue = [(r,j,1) for r,j in rotten]
+        visited = set(rotten)
+        while (queue and fresh):
+            x,y,t = queue.pop(0)        
+            adj = [(1,0),(0,1),(-1,0),(0,-1)]
+            for u,v in adj:
+                dx,dy = x+u, y+v
+                if dx>=0 and dx<m and dy>=0 and dy<n and grid[dx][dy] ==1:
+                    if (dx,dy) not in visited:
+                        visited.add((dx,dy))
+                        queue.append((dx,dy,t+1))
                         fresh-=1
-                        queue.append((dx,dy,step+1))
-                        grid[dx][dy] = 2
-            ret = max(ret,step)
-
-        return ret if fresh ==0 else -1
+            ret = max(ret,t)
+        return ret if fresh == 0 else -1
