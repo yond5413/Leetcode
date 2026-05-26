@@ -1,21 +1,23 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        ret = 0
+        m,n = len(grid),len(grid[0])
         visited = set()
-        n,m = len(grid),len(grid[0])
-        for i in range(n):
-            for j in range(m):
-                if (i,j) not in visited and grid[i][j] == "1":
+        ret = 0
+        for i in range(m):
+            for j in range(n):
+                if (i,j) not in visited and grid[i][j]=="1":
+                    ret +=1
+                    queue = [(i,j)]
                     visited.add((i,j))
-                    ret+=1
-                    stack=[(i,j)]
-                    while (stack):
-                        x,y = stack.pop()
+                    while queue:
+                        x,y = queue.pop(0)
                         adj = [(0,1),(1,0),(0,-1),(-1,0)]
-                        for a,b in adj:
-                            cur_x,cur_y = x+a,y+b
-                            if cur_x>=0 and cur_x<n and cur_y>=0 and cur_y<m and grid[cur_x][cur_y] == "1":
-                                if (cur_x,cur_y) not in visited:
-                                    visited.add((cur_x,cur_y) )
-                                    stack.append((cur_x,cur_y))
+                        for u,v in adj:
+                            dx,dy = x+u,y+v
+                            if dx>=0 and dx<m and dy>=0 and dy<n:
+                                if grid[dx][dy]=="1" and (dx,dy) not in visited:
+                                    queue.append((dx,dy))
+                                    visited.add((dx,dy))
+                            
+
         return ret
