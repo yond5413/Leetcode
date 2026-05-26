@@ -1,24 +1,27 @@
 from collections import defaultdict
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        adj = defaultdict(list)
+        for u,v in prerequisites:
+            adj[v].append(u)
+        visited = set()
         cache = {}
-        adj_list = defaultdict(list)
-        for c,p in prerequisites:
-            adj_list[p].append(c)
-        def dfs(vert,visited):
-            if vert in visited:
+        def dfs(curr):
+            if curr in visited:
                 return False
-            if vert in cache:
-                return cache[vert]
-            visited.add(vert)
-            for c in adj_list[vert]:
-                if not dfs(c,visited):
-                    cache[c] = False
+            if curr in cache:
+                return cache[curr]
+            visited.add(curr)
+            pre = adj[curr]
+            for u in pre:
+                if not dfs(u):
+                    cache[u] = False
                     return False
-            visited.remove(vert)
-            cache[vert] = True
+            visited.remove(curr)
+            cache[curr] = True
             return True
+            
         for i in range(numCourses):
-            if not dfs(i,set()):
+            if not dfs(i):
                 return False
         return True
