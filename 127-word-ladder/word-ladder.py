@@ -2,16 +2,15 @@ from collections import defaultdict
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         if endWord not in wordList:
-            return 0
-        
+            return 0 
+
         hashmap = defaultdict(list)
-        
-        for i in range(len(wordList)):
-            for j in range(len(wordList[i])):
-                curr = wordList[i][:j] +"*" + wordList[i][j+1:]
-                hashmap[curr].append(wordList[i])
         queue = [(beginWord,1)]
         visited = set([beginWord])
+        for i in range(len(wordList)):
+            for j in range(len(wordList[i])):
+                curr = wordList[i][:j]+"*"+wordList[i][j+1:]
+                hashmap[curr].append(wordList[i])
         while queue:
             word,steps = queue.pop(0)
             if word == endWord:
@@ -23,5 +22,3 @@ class Solution:
                     for neigh in hashmap[curr]:
                         queue.append((neigh,steps+1))
         return 0
-
-        
