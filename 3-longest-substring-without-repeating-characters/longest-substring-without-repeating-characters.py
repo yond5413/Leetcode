@@ -8,5 +8,5 @@ class Solution:
                 lookup.remove(s[l])
                 l+=1
             lookup.add(s[r])
-            ret = max(ret,r-l+1)
+            ret = max(r-l+1,ret)
         return ret
