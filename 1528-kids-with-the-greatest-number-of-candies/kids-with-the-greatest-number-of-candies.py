@@ -4,6 +4,6 @@ class Solution:
         ret = [False]*n
         max_cand = max(candies)
         for i in range(n):
-            if candies[i]+extraCandies >=max_cand:
+            if max_cand <= candies[i]+extraCandies:
                 ret[i] = True
         return ret
