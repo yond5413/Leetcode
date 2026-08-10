@@ -1,6 +1,6 @@
 class Solution:
     def stoneGameII(self, piles: List[int]) -> int:
-        dp ={}
+        dp = {}
         def dfs(alice,i,M):
             if i == len(piles):
                 return 0
@@ -11,11 +11,11 @@ class Solution:
             for X in range(1,2*M+1):
                 if X+i>len(piles):
                     break
-                tot += piles[i+X-1]
+                tot+= piles[i+X-1]
                 if alice:
-                    ret = max(ret,tot+dfs(not alice, i+X,max(M,X)))
+                    ret = max(ret,tot+dfs(not alice,i+X,max(M,X)))
                 else:
-                    ret = min(ret,dfs(not alice, i+X,max(M,X)))
+                    ret = min(ret,dfs(not alice,i+X,max(M,X)))
             dp[(alice,i,M)] = ret
             return ret
         return dfs(True,0,1)
