@@ -1,18 +1,11 @@
 class Solution:
     def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
-        count = n
+        count = 0
         for i in range(len(flowerbed)):
-            if flowerbed[i] == 0 and i == 0:
-                if (len(flowerbed)>1 and flowerbed[i+1]!=1) or len(flowerbed)==1:
-                    flowerbed[i] = 1
-                    count-=1
-            elif i == len(flowerbed)-1 and  flowerbed[i] == 0 :
-                if len(flowerbed)>1 and flowerbed[i-1]!=1:
-                    flowerbed[i] = 1
-                    count-=1
-            elif flowerbed[i] == 0 and len(flowerbed) >3:
-                if flowerbed[i-1] != 1 and  flowerbed[i+1] !=1:
-                    flowerbed[i] = 1
-                    count-=1
-
-        return count<=0
+            if flowerbed[i] == 0:
+                left = i ==0 or flowerbed[i-1] ==0
+                right = i == len(flowerbed)-1 or flowerbed[i+1] ==0
+                if left and right:
+                    count+=1
+                    flowerbed[i] =1
+        return count>=n
