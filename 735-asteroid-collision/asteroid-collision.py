@@ -3,9 +3,9 @@ class Solution:
         ret = []
         for ast in asteroids:
             while ret and ret[-1]>0 and ast<0:
-                if ret[-1]<abs(ast):
+                if abs(ast)>ret[-1]:
                     ret.pop(-1)
-                elif ret[-1]==abs(ast):
+                elif abs(ast)==ret[-1]:
                     ret.pop(-1)
                     break
                 else:
