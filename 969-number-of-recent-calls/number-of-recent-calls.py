@@ -4,9 +4,9 @@ class RecentCounter:
         self.queue = []
 
     def ping(self, t: int) -> int:
-        self.queue.append(t)
         l = t-3000
-        while self.queue and (l>self.queue[0] or t<self.queue[0]):
+        self.queue.append(t)
+        while l>self.queue[0]:
             self.queue.pop(0)
         return len(self.queue)
 
