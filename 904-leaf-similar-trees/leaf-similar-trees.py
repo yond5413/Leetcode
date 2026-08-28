@@ -9,7 +9,7 @@ class Solution:
         r1,r2 = [],[]
         def dfs(curr,leaves):
             if not curr:
-                return None
+                return 
             if not curr.left and not curr.right:
                 leaves.append(curr.val)
             dfs(curr.left,leaves)
